@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% extends 'layouts/base.html' %}
+    {% block content %}
+    <h1>Tareas</h1>
+    {% for task in tasks %}
+
+    <div>
+        
+        <h2>    {% if task.done == False%} 🕐 {% else %} ✅ {% endif %} {{task.title}} No. {{task.id}}</h2>
+        <p>{{task.description}}</p>
+        <p>Project: {{task.project}}</p>
+
+        {% if task.done == False %}
+        <p>Tarea pediente</p>
+        {%else%}
+        <p>Tarea realizada</p>
+        {%endif%}
+
+
+        <button>
+            ❌ Deleted
+        </button>
+        <button>
+            ✅ Done
+        </button>
+    </div>
+
+    {% endfor %}
+
+    {% endblock %}
+</body>
+</html>
